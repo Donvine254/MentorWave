@@ -31,14 +31,14 @@ function Organizations() {
         <div>
           <img
             className="logos"
-            src="https://www.mentor-pro.com/wp-content/uploads/2020/11/apple.jpg"
+            src="https://cdn.freebiesupply.com/images/large/2x/apple-logo-transparent.png"
             alt="apple-logo"
           />
         </div>
         <div>
           <img
             className="logos"
-            src="https://www.mentor-pro.com/wp-content/uploads/2020/11/microsoft.jpg"
+            src="https://static.vecteezy.com/system/resources/previews/019/017/460/original/microsoft-transparent-logo-free-png.png"
             alt="microsoft-logo"
           />
         </div>
@@ -52,7 +52,7 @@ function Organizations() {
         <div>
           <img
             className="logos"
-            src="https://www.mentor-pro.com/wp-content/uploads/2020/11/paypal.jpg"
+            src="https://static.vecteezy.com/system/resources/previews/020/190/502/original/paypal-logo-paypal-logo-free-free-vector.jpg"
             alt="paypal-logo"
           />
         </div>
@@ -66,14 +66,15 @@ function Organizations() {
         <div>
           <img
             className="logos"
-            src="https://www.jobinkenya.com/sites/default/files/styles/medium/public/employer_logos/logo_1725305539.png?itok=kBbUYO3O"
+            src="https://github.com/Orandifelix/MentorWave/blob/main/public/strathmore.png?raw=true"
             alt="strathmore-logo"
           />
         </div>
         <div>
           <img
             className="logos"
-            src="../public/mastercard.svg"
+            src="https://github.com/Orandifelix/MentorWave/blob/main/public/mastercard.png?raw=true"
+            alt="mastercard"
           />
         </div>
       </div>
