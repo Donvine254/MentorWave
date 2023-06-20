@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./LoginRegistration.css";
+import "./login.css";
 import Swal from "sweetalert2";
 import { Checkbox } from "semantic-ui-react";
 import Axios  from "axios";
@@ -8,7 +8,6 @@ import { baseUrl } from "./LoginRegistration";
 
 function Registration({ handleLoginForm, userData, setUserData, handleRegister }) {
   const [showPassword, setShowPassword] = useState(false);
-
   const handleChange = (event) => {
     const { name, type, checked } = event.target;
     const value = type === 'checkbox' ? checked : event.target.value;
@@ -25,7 +24,7 @@ function Registration({ handleLoginForm, userData, setUserData, handleRegister }
         Swal.fire({
           icon: "success",
           title: "Registration Successful",
-          text: "Thank you for registering!",
+          text: "Thank you for registering! Proceed to log in with your new credentials",
         });
         setUserData({
           firstName: "",
@@ -48,6 +47,7 @@ function Registration({ handleLoginForm, userData, setUserData, handleRegister }
   };
   
   return (
+    <div className="login-container">
     <div className="ui padded container" id="registerForm">
       <div className="ui attached message">
         <div>
@@ -83,7 +83,7 @@ function Registration({ handleLoginForm, userData, setUserData, handleRegister }
         <div className="field">
           <label>Email</label>
           <input
-            placeholder="Username"
+            placeholder="email"
             type="email"
             name="email"
             value={userData.email}
@@ -139,6 +139,7 @@ function Registration({ handleLoginForm, userData, setUserData, handleRegister }
         <i className="icon large help"></i>
         Already signed up ? <a onClick={handleRegister}>Login here</a> instead.
       </div>
+    </div>
     </div>
   );
 }
