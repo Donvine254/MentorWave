@@ -6,40 +6,21 @@ import Axios from "axios";
 import { baseUrl } from "./LoginRegistration";
 import { BsSoundwave } from "react-icons/bs";
 
-function Registration({
-  userData,
-  setUserData,
-  handleRegister,
-}) {
+function Registration({ userData, setUserData, handleRegister }) {
+  
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isValid, setIsValid] = useState(true);
-  const pattern = /^(?=.*[a-zA-Z])(?=.*\d)(?!.*12345678).*$/;
-  
-  const validatePassword = (password) => {
-      return Promise.resolve(pattern.test(password));
-  };
+
   const handleChange = (event) => {
-    const { name, type, checked } = event.target;
-    const value = type === "checkbox" ? checked : event.target.value;
+    const { name, value } = event.target;
     setUserData((prevData) => ({
       ...prevData,
-      [name]: name === "agreedToTerms" ? checked : value,
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-     const passwordIsValid = await validatePassword(userData.password);
-    if(!passwordIsValid){
-      setIsValid(false);
-      setLoading(false);
-      return false;
-    }
-    else if(!userData.agreedToTerms){
-      setLoading(false);
-      return false;
-    }
     Axios.post(baseUrl, userData)
       .then(() => {
         Swal.fire({
@@ -51,8 +32,7 @@ function Registration({
           fullName: "",
           email: "",
           password: "",
-          role: "",
-          agreedToTerms: false,
+          role: "mentee",
         });
         handleRegister();
         setLoading(false);
@@ -117,7 +97,6 @@ function Registration({
             />
             <i className="lock icon" id="password-icon"></i>
           </div>
-          {!isValid && <p className="error-message">Pasword must contain letters and numbers.</p>}
           <div className="input-field">
             <Checkbox
               value={showPassword}
@@ -132,32 +111,24 @@ function Registration({
               className="ui select dropdown register-select"
               value={userData.role}
               onChange={handleChange}>
-              <option value="" hidden>
-                Role
-              </option>
               <option value="mentee">Mentee</option>
               <option value="mentor">Mentor</option>
             </select>
           </div>
           <div className="input-field">
-            <Checkbox
-              name="agreedToTerms"
-              value={userData.agreedToTerms}
-              onChange={handleChange}
-              required
-            />
             <span>
               {" "}
-              I agree to the <a>terms and conditions</a>
+             By continuing, you agree to the <a>terms and conditions</a>
             </span>
           </div>
-           {!userData.agreedToTerms && <p className="error-message">Please accept the terms and conditions to continue.</p>}
           <button
             onClick={() => {
               setLoading(true);
             }}
             type="submit"
-            className={!loading? "register-btn": "ui fluid loading primary button"}>
+            className={
+              !loading ? "register-btn" : "ui fluid loading primary button"
+            }>
             Register
           </button>
         </form>
